@@ -99,12 +99,16 @@ const HistorySidebar = ({ onSelect }: Props) => {
                   {item.severity}
                 </span>
   
-                <small>
+                <small
+                  title={new Date(
+                    item.createdAt
+                  ).toLocaleString()}
+                >
                   {new Date(
                     item.createdAt
-                  ).toLocaleString([], {
-                    dateStyle: "medium",
-                    timeStyle: "short",
+                  ).toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
                   })}
                 </small>
               </div>

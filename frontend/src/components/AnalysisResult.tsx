@@ -1,14 +1,49 @@
-import { DebugAnalysisResponse } from "../types/debug";
+import {
+  DebugAnalysisResponse,
+  DebugReport,
+} from "../types/debug";
 
 type Props = {
-  result: DebugAnalysisResponse;
+  result:
+    | DebugAnalysisResponse
+    | DebugReport;
 };
 
 const AnalysisResult = ({ result }: Props) => {
-  return (
-    <div className="card">
-      <h2>Analysis Result</h2>
 
+  const copyShareLink = async () => {
+    if (!("id" in result)) {
+      alert(
+        "Please open a saved report from history first."
+      );
+  
+      return;
+    }
+  
+    const shareUrl =
+      `${window.location.origin}/report/${result.id}`;
+  
+    await navigator.clipboard.writeText(
+      shareUrl
+    );
+  
+    alert("Share link copied!");
+  };
+
+  return (
+    <div className="card analysis-card">
+      <div className="result-header">
+        <h2>Analysis Result</h2>
+
+        {"id" in result && (
+          <button
+            className="share-button"
+            onClick={copyShareLink}
+          >
+            Copy Share Link
+          </button>
+        )}
+      </div>
       <section>
         <h3>Summary</h3>
         <p>{result.summary}</p>

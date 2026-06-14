@@ -24,7 +24,7 @@ app.use(express.json({ limit: '1mb' }));
 app.get('/health', (_req, res) => {
   res.json({
     status: 'ok',
-    message: 'AI Debugging Assistant API is running',
+    message: 'AI Root Cause Analyzer API is running',
   });
 });
 

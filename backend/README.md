@@ -1,28 +1,28 @@
-# AI Debugging Assistant Backend
+# Backend
 
-Backend API service for the AI Debugging Assistant project.
-
-## Responsibilities
-
-The backend is responsible for:
-
-- Handling API requests
-- Validating request payloads
-- Calling OpenAI APIs
-- Generating structured debugging analysis
-- Returning validated JSON responses
+Node.js + Express API powering AI Root Cause Analyzer.
 
 ---
 
-# Tech Stack
+## Responsibilities
+
+- AI-powered debugging analysis
+- Report persistence
+- Debug history retrieval
+- Shareable report retrieval
+- OpenAI integration
+- PostgreSQL access through Prisma
+
+---
+
+## Tech Stack
 
 - Node.js
-- Express.js
+- Express
 - TypeScript
-- OpenAI API
-- Zod
-- dotenv
-- CORS
+- Prisma
+- PostgreSQL
+- OpenAI
 
 ---
 
@@ -42,122 +42,68 @@ src/
 
 ---
 
-# Installation
+## API Endpoints
 
-```bash
-npm install
-```
-
----
-
-# Run Development Server
-
-```bash
-npm run dev
-```
-
-Runs on:
-
-```txt
-http://localhost:5225
-```
-
----
-
-# Build Project
-
-```bash
-npm run build
-```
-
----
-
-# Start Production Build
-
-```bash
-npm start
-```
-
----
-
-# Environment Variables
-
-Create:
-
-```txt
-.env
-```
-
-Add:
-
-```env
-PORT=5225
-OPENAI_API_KEY=your_api_key
-```
-
----
-
-# API Endpoints
-
-## Health Check
-
-```http
-GET /health
-```
-
----
-
-## Analyze Debugging Issue
+### Analyze Error
 
 ```http
 POST /api/debug/analyze
 ```
 
-### Request Body
-
-```json
-{
-  "errorMessage": "TypeError: Cannot read properties of undefined reading map",
-  "stackTrace": "at UserList.jsx:12",
-  "codeSnippet": "const names = users.map(user => user.name);",
-  "language": "JavaScript",
-  "framework": "React"
-}
-```
-
----
-
-## Mock Analyze Endpoint
+### Get Debug History
 
 ```http
-POST /api/debug/mock-analyze
+GET /api/debug/history
 ```
 
-Returns mock debugging analysis data.
+### Get Report By ID
+
+```http
+GET /api/debug/report/:id
+```
 
 ---
 
-# Validation
+## Environment Variables
 
-The project uses Zod for:
-
-- Request payload validation
-- AI response validation
-
----
-
-# Future Improvements
-
-- Database persistence
-- Authentication
-- Rate limiting
-- Logging system
-- AI streaming responses
-- Vector search / RAG
-- GitHub repository integration
+```env
+OPENAI_API_KEY=your_key
+DATABASE_URL=your_database_url
+PORT=5225
+```
 
 ---
 
-# License
+## Run Locally
 
-MIT
+### Install
+
+```bash
+npm install
+```
+
+### Start Development Server
+
+```bash
+npm run dev
+```
+
+### Prisma Commands
+
+Generate Client
+
+```bash
+npx prisma generate
+```
+
+Run Migrations
+
+```bash
+npx prisma migrate dev
+```
+
+Open Prisma Studio
+
+```bash
+npx prisma studio
+```

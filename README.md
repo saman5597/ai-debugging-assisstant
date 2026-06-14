@@ -1,10 +1,32 @@
 # AI Root Cause Analyzer
 
-Root Cause Analyzer is an AI-powered developer tool built with **React, Node.js, TypeScript, OpenAI, PostgreSQL, and Prisma** that helps engineers investigate runtime errors through structured AI-generated root cause analysis and persistent debugging history.
+AI Root Cause Analyzer is an AI-powered developer tool built with **React, Node.js, TypeScript, OpenAI, PostgreSQL, and Prisma** that helps engineers investigate runtime errors through structured AI-generated root cause analysis, persistent debugging history, and shareable debugging reports.
 
-The application helps developers analyze runtime errors, stack traces, and code snippets by generating structured root cause analysis, suggested fixes, improved code recommendations, and preventive guidance.
+The application helps developers analyze runtime errors, stack traces, and code snippets by generating structured root cause analysis, suggested fixes, improved code recommendations, severity classification, confidence scoring, and preventive guidance.
 
-Unlike a simple stateless AI demo, the application persists every debugging session and allows developers to revisit previous analyses through a searchable debugging history.
+Unlike a simple stateless AI demo, the application persists every debugging session, enables report sharing, and allows developers to revisit previous analyses through a searchable debugging history.
+
+---
+
+## Why This Exists
+
+Modern AI models can explain individual errors extremely well.
+
+However, debugging is often more than understanding a single stack trace.
+
+Developers frequently need to:
+
+- Revisit previous investigations
+- Track recurring issues
+- Share debugging findings with teammates
+- Maintain a history of root cause analyses
+- Organize debugging knowledge over time
+
+AI Root Cause Analyzer explores this workflow by combining AI-generated analysis with persistent storage, searchable history, and shareable debugging reports.
+
+Instead of treating each debugging session as a one-off conversation, the application aims to make debugging insights reusable, discoverable, and easier to collaborate on.
+
+The long-term vision is to evolve beyond isolated error analysis by incorporating code changes, repository context, logs, and debugging workflows to provide richer root cause investigation capabilities.
 
 ---
 
@@ -43,6 +65,16 @@ https://root-cause-analyzer.vercel.app/
 
 ---
 
+### Shareable Reports
+
+- Dedicated report pages
+- Route-based report retrieval
+- Copy shareable report links
+- Reopen reports directly from URLs
+- Persistent report storage
+
+---
+
 ### User Experience
 
 - Modern responsive interface
@@ -51,6 +83,7 @@ https://root-cause-analyzer.vercel.app/
 - Scrollable history panel
 - Searchable history sidebar
 - Interactive report retrieval
+- Report sharing workflow
 
 ---
 
@@ -108,6 +141,7 @@ https://root-cause-analyzer.vercel.app/
 - TypeScript
 - Vite
 - Axios
+- React Router
 
 ### Backend
 
@@ -160,6 +194,7 @@ ai-root-cause-analyzer/
 
 ```http
 POST /api/debug/analyze
+Analyzes an error message, stack trace, and code snippet using OpenAI.
 ```
 
 ---
@@ -168,6 +203,7 @@ POST /api/debug/analyze
 
 ```http
 POST /api/debug/mock-analyze
+Returns mock analysis data for local development and UI testing.
 ```
 
 ---
@@ -176,6 +212,7 @@ POST /api/debug/mock-analyze
 
 ```http
 GET /api/debug/history
+Returns recently analyzed debugging reports.
 ```
 
 ---
@@ -184,6 +221,7 @@ GET /api/debug/history
 
 ```http
 GET /api/debug/report/:id
+Returns a specific saved debugging report.
 ```
 
 ---
@@ -239,15 +277,34 @@ http://localhost:5173
 ## Current Capabilities
 
 - AI-assisted debugging
-- Persistent debugging history
-- Report retrieval
-- Searchable history
-- PostgreSQL storage
-- Root cause analysis
-- Severity classification
-- Confidence scoring
+- Runtime error analysis
+- Stack trace interpretation
+- Code snippet analysis
+- Root cause detection
 - Suggested fixes
 - Improved code recommendations
+
+## Persistence
+
+- PostgreSQL storage
+- Prisma ORM integration
+- Persistent debugging history
+- Historical report retrieval
+
+## Navigation
+
+- Searchable debugging history
+- Clickable history navigation
+- Dedicated report routes
+- Shareable report URLs
+
+## Reporting
+
+- Severity classification
+- Confidence scoring
+- Prevention tips
+- Follow-up questions
+- Shareable debugging reports
 
 ---
 
@@ -255,9 +312,8 @@ http://localhost:5173
 
 ### Version 1.1
 
-- Debug report sharing
-- Export analysis
-- Better filtering
+- Export analysis (Markdown/PDF)
+- Advanced filtering
 - Pagination
 
 ### Version 2.0
@@ -278,9 +334,9 @@ http://localhost:5173
 
 ## Motivation
 
-Modern AI models can explain isolated errors, but effective debugging often requires preserving context and revisiting previous investigations.
+Modern AI models can explain isolated errors, but effective debugging often requires preserving context, revisiting previous investigations, and sharing debugging insights across teams.
 
-This project explores how AI can assist developer workflows by combining structured AI analysis with persistent debugging history and an intuitive retrieval experience.
+This project explores how AI can assist developer workflows by combining structured AI analysis, persistent debugging history, and shareable debugging reports into a unified developer experience.
 
 ---
 
@@ -288,7 +344,7 @@ This project explores how AI can assist developer workflows by combining structu
 
 **Saman Arshad**
 
-7+ years of experience building full-stack applications across JavaScript ecosystems, currently exploring AI-assisted developer tooling.
+Full Stack Engineer with 7+ years of experience building scalable web applications across JavaScript ecosystems, currently exploring AI-assisted developer tooling and intelligent debugging workflows.
 
 ---
 

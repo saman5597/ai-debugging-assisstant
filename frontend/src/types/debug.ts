@@ -9,6 +9,14 @@ export type DebugAnalysisResponse = {
   followUpQuestions?: string[];
 };
 
+export type DebugReport = DebugAnalysisResponse & {
+  id: string;
+  errorMessage: string;
+  language: string;
+  framework?: string;
+  createdAt: string;
+};
+
 export type DebugRequestPayload = {
   errorMessage: string;
   stackTrace?: string;
